@@ -8,3 +8,7 @@ Artifacts are assets to be distributed, representing the output of a job (App bi
 
 - Save artifacts and provide them for download
 - Save artifacts and use them in subsequent jobs
+
+## Job outputs:
+
+Jobs can ouput values, and those values ve available for others jobs
