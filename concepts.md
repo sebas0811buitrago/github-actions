@@ -29,3 +29,7 @@ use the cache github action in all the places need it, for example
 for `npm ci` you should use it before the step, and add the cache step in all the places you want to reuse the cache
 
 The cache is even store between different workflow executions
+
+# Secrets:
+
+secrets context object
