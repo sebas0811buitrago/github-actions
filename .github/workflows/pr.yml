@@ -1,0 +1,16 @@
+name: PR project
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
+    workflow_dispatch:
+
+jobs:
+    pr:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+            - name: install dependencies
+              run: npm ci
+            - name: run tests
+              run: npm test
