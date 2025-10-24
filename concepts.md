@@ -12,3 +12,5 @@ Artifacts are assets to be distributed, representing the output of a job (App bi
 ## Job outputs:
 
 Jobs can ouput values, and those values ve available for others jobs
+
+## Caching :
