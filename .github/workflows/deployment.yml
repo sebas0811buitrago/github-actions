@@ -1,3 +1,5 @@
+# you can skip workflows runs wih some comments in the commits https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs
+
 name: Deploy project
 on:
   push:
@@ -29,5 +31,10 @@ jobs:
         run: npm ci
       - name: build
         run: npm run build
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist
       - name: deploy
         run: echo "Deploying to production..."
