@@ -14,3 +14,6 @@ Artifacts are assets to be distributed, representing the output of a job (App bi
 Jobs can ouput values, and those values ve available for others jobs
 
 ## Caching :
+
+use the cache github action in all the places need it, for example
+for `npm ci` you should use it before the step, and add the cache step in all the places you want to reuse the cache
