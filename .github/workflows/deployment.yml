@@ -50,8 +50,8 @@ jobs:
         with:
           name: dist-files
 
-      - name: Output js file name
-        run: echo "JS file name: ${{ needs.build.outputs.js_file_name }}"
+      - name: output js file name
+        run: echo "${{ needs.build.outputs.js-file-name }}"
       - name: List files
         run: ls
       - name: deploy
