@@ -1,67 +1,78 @@
-# you can skip workflows runs wih some comments in the commits https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs
-
-name: Deploy project
+name: Website Deployment
 on:
-    push:
-        branches:
-            - main
-
-        # paths:
-        #   - "src/**"
-    workflow_dispatch:
-env:
-    ENV: production
+  push:
+    branches:
+      - main
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout code
-              uses: actions/checkout@v4
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        id: run-test
+        run: npm run test
+      - name: Upload test report
+        if: ${{ steps.run-test.outcome == 'failure' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        id: build-website
+        run: npm run build
+      - name: Upload artifacts
 
-            - name: cache dependencies
-              uses: actions/cache@v4
-              with:
-                  path: ~/.npm
-                  key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
-            - name: install dependencies
-              run: npm ci
-            - name: run tests
-              run: npm test
-    build:
-        runs-on: ubuntu-latest
-        needs: test
-        outputs:
-            js-file-name: ${{ steps.publish_js_file_name.outputs.js_file_name }}
-        steps:
-            - name: checkout code
-              uses: actions/checkout@v4
-
-            - name: cache dependencies
-              uses: actions/cache@v4
-              with:
-                  path: ~/.npm
-                  key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
-            - name: install dependencies
-              run: npm ci
-            - name: build
-              run: npm run build
-
-            - name: upload artifact
-              uses: actions/upload-artifact@v4
-              with:
-                  name: dist-files
-                  path: dist
-
-    deploy:
-        runs-on: ubuntu-latest
-        needs: build
-        steps:
-            - name: Get build artifacts
-              uses: actions/download-artifact@v4
-              with:
-                  name: dist-files
-
-            - name: List files
-              run: ls
-            - name: deploy
-              run: echo "Deploying to production..."
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+      - name: Output contents
+        run: ls
+      - name: Deploy
+        run: echo "Deploying..."
