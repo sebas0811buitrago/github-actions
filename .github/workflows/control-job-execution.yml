@@ -3,8 +3,7 @@
 #  success()=> none of the previous steps failed,
 # always()=> causes the step to always executed even if the workflow has been cancelled
 # cancelled()=> return tru if the workflow has been cancelled
-
-name: Website Deployment
+name: Conditional
 on:
   push:
     branches:
@@ -43,7 +42,7 @@ jobs:
         run: npm run test
       - name: Upload test report
         if: failure () && ${{ steps.run-test.outcome == 'failure' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: test.json
@@ -66,7 +65,7 @@ jobs:
         run: npm run build
       - name: Upload artifacts
 
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-files
           path: dist
@@ -75,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist-files
       - name: Output contents
