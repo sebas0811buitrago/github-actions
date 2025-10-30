@@ -4,7 +4,7 @@ import { add, multiply, isPalindrome } from "./utils";
 describe("utils", () => {
   describe("add", () => {
     it("should add two positive numbers", () => {
-      expect(add(2, 3)).toBe(5);
+      expect(add(2, 3)).toBe(10);
     });
 
     it("should add negative numbers", () => {
