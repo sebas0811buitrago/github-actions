@@ -1,3 +1,9 @@
+# especial conditions
+#  failure() => execute step if any previous job failed,
+#  success()=> none of the previous steps failed,
+# always()=> causes the step to always executed even if the workflow has been cancelled
+# cancelled()=> return tru if the workflow has been cancelled
+
 name: Website Deployment
 on:
   push:
@@ -36,7 +42,7 @@ jobs:
         id: run-test
         run: npm run test
       - name: Upload test report
-        if: ${{ steps.run-test.outcome == 'failure' }}
+        if: failure () && ${{ steps.run-test.outcome == 'failure' }}
         uses: actions/upload-artifact@v3
         with:
           name: test-report
