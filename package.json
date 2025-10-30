@@ -12,8 +12,12 @@
     "test:run": "vitest run"
   },
   "devDependencies": {
+    "jsdom": "^27.0.1",
     "typescript": "~5.9.3",
     "vite": "^7.1.7",
     "vitest": "^4.0.2"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.9.1"
   }
 }

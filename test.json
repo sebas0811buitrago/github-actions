@@ -1,0 +1,130 @@
+{
+  "numTotalTestSuites": 5,
+  "numPassedTestSuites": 5,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 10,
+  "numPassedTests": 10,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1761789503033,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["utils", "add"],
+          "fullName": "utils add should add two positive numbers",
+          "status": "passed",
+          "title": "should add two positive numbers",
+          "duration": 0.6904579999999783,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "add"],
+          "fullName": "utils add should add negative numbers",
+          "status": "passed",
+          "title": "should add negative numbers",
+          "duration": 0.07787499999994907,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "add"],
+          "fullName": "utils add should add zero",
+          "status": "passed",
+          "title": "should add zero",
+          "duration": 0.049832999999978256,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "multiply"],
+          "fullName": "utils multiply should multiply two positive numbers",
+          "status": "passed",
+          "title": "should multiply two positive numbers",
+          "duration": 0.0677079999999819,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "multiply"],
+          "fullName": "utils multiply should multiply by zero",
+          "status": "passed",
+          "title": "should multiply by zero",
+          "duration": 0.04812499999997044,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "multiply"],
+          "fullName": "utils multiply should multiply negative numbers",
+          "status": "passed",
+          "title": "should multiply negative numbers",
+          "duration": 0.05529100000001108,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "isPalindrome"],
+          "fullName": "utils isPalindrome should return true for palindromes",
+          "status": "passed",
+          "title": "should return true for palindromes",
+          "duration": 0.15670799999998053,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "isPalindrome"],
+          "fullName": "utils isPalindrome should return false for non-palindromes",
+          "status": "passed",
+          "title": "should return false for non-palindromes",
+          "duration": 0.11695799999995415,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "isPalindrome"],
+          "fullName": "utils isPalindrome should handle empty strings",
+          "status": "passed",
+          "title": "should handle empty strings",
+          "duration": 0.21591699999999037,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["utils", "isPalindrome"],
+          "fullName": "utils isPalindrome should be case insensitive",
+          "status": "passed",
+          "title": "should be case insensitive",
+          "duration": 0.053541999999993095,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1761789503450,
+      "endTime": 1761789503452.2158,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/sebastian.buitrago/Documents/learning/github-actions/src/utils.test.ts"
+    }
+  ]
+}
