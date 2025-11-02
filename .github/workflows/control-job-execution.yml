@@ -95,3 +95,7 @@ jobs:
         run: |
           echo "Something went wrong"
           echo "${{ toJSON(github) }}"
+  reuse-workflow:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: dist-files

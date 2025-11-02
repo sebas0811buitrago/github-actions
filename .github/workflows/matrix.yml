@@ -2,9 +2,16 @@ name: Matrix Demo
 on: push
 jobs:
     build:
+        continue-on-error: true # if we dont add this on failing jobs with stop the others
         strategy:
             matrix:
                 operating-system: [ubuntu-latest, windows-latest]
+                include:
+                    - node-version: 18 # adding combinations
+                    - operation-system: ubunt-latest
+                exclude:
+                    - node-version: 12
+                    - operation-system: ubunt-latest
         runs-on: ${{ matrix.operating-system}}
         steps:
             - name: Get Code
