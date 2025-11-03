@@ -1,1 +1,5 @@
-# script injection
+# script injection =>  value injected externally to workflow =>  use ENV variables for inputs or actions to force making inputs plane strings
+# malicious thid party actions => use your own actions(high security , high effort), use thord party action (chack if is verified , in case is not veified you shuld chack manuaally the code of the action)
+# permissions => jobs permissions
+# GITHUB TOKEN => https://docs.github.com/en/actions/concepts/security/github_token?versionId=free-pro-team%40latest&productId=actions&restPage=tutorials%2Cuse-containerized-services%2Ccreate-a-docker-container-action
+
